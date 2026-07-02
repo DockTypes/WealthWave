@@ -470,3 +470,104 @@ body {
 .col-l .neu-card:nth-child(1) { animation: fadeUp 0.45s var(--ease) 0.18s both; }
 .col-l .neu-card:nth-child(2) { animation: fadeUp 0.45s var(--ease) 0.26s both; }
 .col-r .neu-card { animation: fadeUp 0.45s var(--ease) 0.22s both; }
+
+/* ── SPA Page System ───────────────────────────────────────── */
+.page { display: none; }
+.page-active { display: block; animation: fadeUp 0.35s var(--ease) both; }
+
+/* ── Filter Bar (Transactions Page) ────────────────────────── */
+.filter-bar {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.filter-bar .neu-input {
+    flex: 1;
+    max-width: 220px;
+}
+
+/* ── Activity Feed ─────────────────────────────────────────── */
+.feed-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.feed-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-2);
+    border: 1px solid var(--glass-border);
+    transition: var(--ease);
+}
+
+.feed-item:hover { border-color: var(--glass-hover); }
+
+.feed-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.feed-dot.up   { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.feed-dot.down { background: var(--red);   box-shadow: 0 0 6px var(--red); }
+
+.feed-text {
+    flex: 1;
+    font-size: 0.85rem;
+    color: var(--text-2);
+}
+
+.feed-text strong { color: var(--text-1); }
+
+.feed-time {
+    font-size: 0.72rem;
+    color: var(--text-3);
+    white-space: nowrap;
+}
+
+/* ── Settings ──────────────────────────────────────────────── */
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.settings-grid .neu-card:last-child {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    .settings-grid { grid-template-columns: 1fr; }
+    .filter-bar { flex-direction: column; }
+    .filter-bar .neu-input { max-width: none; }
+}
+
+/* ── Danger Button ─────────────────────────────────────────── */
+.btn-danger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1rem;
+    background: var(--red-bg);
+    color: var(--red);
+    border: 1px solid rgba(251, 113, 133, 0.2);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--ease);
+}
+
+.btn-danger:hover {
+    background: rgba(251, 113, 133, 0.2);
+    border-color: var(--red);
+}

@@ -20,19 +20,19 @@
             </div>
 
             <nav class="nav">
-                <a href="#" class="nav-item active">
+                <a href="#" class="nav-item active" data-page="dashboard">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
                     Dashboard
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-page="activity">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                     Activitate
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-page="transactions">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     Tranzacții
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-page="settings">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/></svg>
                     Setări
                 </a>
@@ -51,124 +51,243 @@
 
         <!-- Main -->
         <main class="main">
-            <header class="header">
-                <div>
-                    <h1>Dashboard</h1>
-                    <p id="current-date" class="date-text"></p>
-                </div>
-            </header>
 
-            <!-- Metric Cards -->
-            <section class="metrics">
-                <div class="neu-card metric">
-                    <div class="metric-ico ico-balance">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
-                    </div>
+            <!-- ==================== PAGE: DASHBOARD ==================== -->
+            <div class="page page-active" id="page-dashboard">
+                <header class="header">
                     <div>
-                        <p class="metric-label">Balanță Totală</p>
-                        <p class="metric-val" id="total-balance">0,00 RON</p>
+                        <h1>Dashboard</h1>
+                        <p id="current-date" class="date-text"></p>
                     </div>
-                </div>
-                <div class="neu-card metric">
-                    <div class="metric-ico ico-income">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                    </div>
-                    <div>
-                        <p class="metric-label">Venituri</p>
-                        <p class="metric-val val-up" id="total-income">0,00 RON</p>
-                    </div>
-                </div>
-                <div class="neu-card metric">
-                    <div class="metric-ico ico-expense">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
-                    </div>
-                    <div>
-                        <p class="metric-label">Cheltuieli</p>
-                        <p class="metric-val val-down" id="total-expense">0,00 RON</p>
-                    </div>
-                </div>
-            </section>
+                </header>
 
-            <!-- Grid -->
-            <div class="grid">
-                <!-- Left -->
-                <div class="col-l">
-                    <div class="neu-card">
-                        <div class="card-top">
-                            <h2>Cheltuieli pe Categorii</h2>
-                            <span class="live-dot">Live</span>
+                <section class="metrics">
+                    <div class="neu-card metric">
+                        <div class="metric-ico ico-balance">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
                         </div>
-                        <div class="chart-box">
-                            <canvas id="expenseChart"></canvas>
+                        <div>
+                            <p class="metric-label">Balanță Totală</p>
+                            <p class="metric-val" id="total-balance">0,00 RON</p>
                         </div>
-                        <p class="empty-hint" id="chart-empty">Adaugă cheltuieli pentru grafic.</p>
                     </div>
+                    <div class="neu-card metric">
+                        <div class="metric-ico ico-income">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                        </div>
+                        <div>
+                            <p class="metric-label">Venituri</p>
+                            <p class="metric-val val-up" id="total-income">0,00 RON</p>
+                        </div>
+                    </div>
+                    <div class="neu-card metric">
+                        <div class="metric-ico ico-expense">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+                        </div>
+                        <div>
+                            <p class="metric-label">Cheltuieli</p>
+                            <p class="metric-val val-down" id="total-expense">0,00 RON</p>
+                        </div>
+                    </div>
+                </section>
 
-                    <div class="neu-card">
-                        <h2 class="card-top">Tranzacție Nouă</h2>
-                        <form id="transaction-form" class="form">
-                            <div class="form-2col">
-                                <div class="field">
-                                    <label for="t-type">Tip</label>
-                                    <select id="t-type" class="neu-input" required>
-                                        <option value="expense">Cheltuială</option>
-                                        <option value="income">Venit</option>
-                                    </select>
-                                </div>
-                                <div class="field">
-                                    <label for="t-amount">Sumă (RON)</label>
-                                    <input type="number" id="t-amount" class="neu-input" placeholder="0.00" required min="1" step="0.01">
-                                </div>
+                <div class="grid">
+                    <div class="col-l">
+                        <div class="neu-card">
+                            <div class="card-top">
+                                <h2>Cheltuieli pe Categorii</h2>
+                                <span class="live-dot">Live</span>
                             </div>
-                            <div class="form-2col">
-                                <div class="field">
-                                    <label for="t-category">Categorie</label>
-                                    <select id="t-category" class="neu-input" required>
-                                        <option value="Food">Mâncare</option>
-                                        <option value="Transport">Transport</option>
-                                        <option value="Entertainment">Divertisment</option>
-                                        <option value="Utilities">Facturi</option>
-                                        <option value="Salary">Salariu</option>
-                                        <option value="Other">Altele</option>
-                                    </select>
-                                </div>
-                                <div class="field">
-                                    <label for="t-desc">Descriere</label>
-                                    <input type="text" id="t-desc" class="neu-input" placeholder="ex: Kaufland">
-                                </div>
+                            <div class="chart-box">
+                                <canvas id="expenseChart"></canvas>
                             </div>
-                            <button type="submit" class="btn-add">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                                Adaugă
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Right -->
-                <div class="col-r">
-                    <div class="neu-card history-wrap">
-                        <div class="card-top">
-                            <h2>Istoric</h2>
-                            <span class="count-badge" id="tx-count">0</span>
+                            <p class="empty-hint" id="chart-empty">Adaugă cheltuieli pentru grafic.</p>
                         </div>
-                        <div class="table-scroll">
-                            <table class="tbl">
-                                <thead>
-                                    <tr>
-                                        <th>Data</th>
-                                        <th>Categorie</th>
-                                        <th>Descriere</th>
-                                        <th>Sumă</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="transaction-list"></tbody>
-                            </table>
+
+                        <div class="neu-card">
+                            <h2 class="card-top">Tranzacție Nouă</h2>
+                            <form id="transaction-form" class="form">
+                                <div class="form-2col">
+                                    <div class="field">
+                                        <label for="t-type">Tip</label>
+                                        <select id="t-type" class="neu-input" required>
+                                            <option value="expense">Cheltuială</option>
+                                            <option value="income">Venit</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="t-amount">Sumă (RON)</label>
+                                        <input type="number" id="t-amount" class="neu-input" placeholder="0.00" required min="1" step="0.01">
+                                    </div>
+                                </div>
+                                <div class="form-2col">
+                                    <div class="field">
+                                        <label for="t-category">Categorie</label>
+                                        <select id="t-category" class="neu-input" required>
+                                            <option value="Food">Mâncare</option>
+                                            <option value="Transport">Transport</option>
+                                            <option value="Entertainment">Divertisment</option>
+                                            <option value="Utilities">Facturi</option>
+                                            <option value="Salary">Salariu</option>
+                                            <option value="Other">Altele</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label for="t-desc">Descriere</label>
+                                        <input type="text" id="t-desc" class="neu-input" placeholder="ex: Kaufland">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-add">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                    Adaugă
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-r">
+                        <div class="neu-card history-wrap">
+                            <div class="card-top">
+                                <h2>Istoric</h2>
+                                <span class="count-badge" id="tx-count">0</span>
+                            </div>
+                            <div class="table-scroll">
+                                <table class="tbl">
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Categorie</th>
+                                            <th>Descriere</th>
+                                            <th>Sumă</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="transaction-list"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- ==================== PAGE: ACTIVITATE ==================== -->
+            <div class="page" id="page-activity">
+                <header class="header">
+                    <div>
+                        <h1>Activitate</h1>
+                        <p class="date-text">Evoluția veniturilor și cheltuielilor tale.</p>
+                    </div>
+                </header>
+
+                <div class="neu-card" style="margin-bottom:1.25rem">
+                    <div class="card-top">
+                        <h2>Venituri vs Cheltuieli — Ultimele 7 zile</h2>
+                    </div>
+                    <div class="chart-box" style="height:280px">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="neu-card">
+                    <div class="card-top">
+                        <h2>Feed Activitate</h2>
+                    </div>
+                    <ul class="feed-list" id="activity-feed"></ul>
+                    <p class="empty-hint" id="feed-empty">Nicio activitate încă.</p>
+                </div>
+            </div>
+
+            <!-- ==================== PAGE: TRANZACȚII ==================== -->
+            <div class="page" id="page-transactions">
+                <header class="header">
+                    <div>
+                        <h1>Tranzacții</h1>
+                        <p class="date-text">Toate tranzacțiile tale, într-un singur loc.</p>
+                    </div>
+                </header>
+
+                <div class="filter-bar">
+                    <select id="filter-type" class="neu-input">
+                        <option value="all">Toate</option>
+                        <option value="income">Doar Venituri</option>
+                        <option value="expense">Doar Cheltuieli</option>
+                    </select>
+                    <select id="filter-cat" class="neu-input">
+                        <option value="all">Toate Categoriile</option>
+                        <option value="Food">Mâncare</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Divertisment</option>
+                        <option value="Utilities">Facturi</option>
+                        <option value="Salary">Salariu</option>
+                        <option value="Other">Altele</option>
+                    </select>
+                </div>
+
+                <div class="neu-card">
+                    <div class="table-scroll" style="max-height: calc(100vh - 280px)">
+                        <table class="tbl">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tip</th>
+                                    <th>Categorie</th>
+                                    <th>Descriere</th>
+                                    <th>Sumă</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="full-transaction-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PAGE: SETĂRI ==================== -->
+            <div class="page" id="page-settings">
+                <header class="header">
+                    <div>
+                        <h1>Setări</h1>
+                        <p class="date-text">Configurează aplicația după preferințele tale.</p>
+                    </div>
+                </header>
+
+                <div class="settings-grid">
+                    <div class="neu-card">
+                        <h2 class="card-top">Profil</h2>
+                        <div class="field" style="margin-bottom:0.75rem">
+                            <label>Nume</label>
+                            <input type="text" id="s-name" class="neu-input" value="Cristian">
+                        </div>
+                        <div class="field">
+                            <label>Monedă</label>
+                            <select id="s-currency" class="neu-input">
+                                <option value="RON" selected>RON (Leu Românesc)</option>
+                                <option value="EUR">EUR (Euro)</option>
+                                <option value="USD">USD (Dolar)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="neu-card">
+                        <h2 class="card-top">Date</h2>
+                        <p style="color:var(--text-2); font-size:0.85rem; margin-bottom:1rem">Șterge toate tranzacțiile salvate în browser.</p>
+                        <button class="btn-danger" id="btn-clear-data">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                            Șterge Toate Datele
+                        </button>
+                    </div>
+
+                    <div class="neu-card">
+                        <h2 class="card-top">Despre</h2>
+                        <p style="color:var(--text-2); font-size:0.85rem; line-height:1.7">
+                            <strong style="color:var(--text-1)">WealthWave v1.0</strong><br>
+                            Dashboard financiar personal construit cu Vanilla JavaScript, Chart.js și design Dark Aurora.<br><br>
+                            Proiect universitar — Practică anul 2.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
     <script src="app.js"></script>
