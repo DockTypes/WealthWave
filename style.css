@@ -151,9 +151,6 @@ body {
     padding: 2rem 2.5rem;
     overflow-y: auto;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
     position: relative;
 }
 
@@ -472,8 +469,12 @@ body {
 .col-r .neu-card { animation: fadeUp 0.45s var(--ease) 0.22s both; }
 
 /* ── SPA Page System ───────────────────────────────────────── */
-.page { display: none; }
-.page-active { display: block; animation: fadeUp 0.35s var(--ease) both; }
+.page { 
+    display: none; 
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.page-active { display: flex; animation: fadeUp 0.35s var(--ease) both; }
 
 /* ── Filter Bar (Transactions Page) ────────────────────────── */
 .filter-bar {
