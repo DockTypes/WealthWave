@@ -36,6 +36,13 @@ class TransactionManager {
 class AnalyticsEngine {
     constructor(txManager) {
         this.txManager = txManager;
+        this.chartInstance = null;
+        
+        if(typeof document !== 'undefined') {
+            document.addEventListener('transactionsUpdated', () => this.renderChart());
+            // Initial render
+            setTimeout(() => this.renderChart(), 100);
+        }
     }
 
     getTotals() {
@@ -53,6 +60,73 @@ class AnalyticsEngine {
             expense,
             balance: income - expense
         };
+    }
+    
+    getExpensesByCategory() {
+        const txs = this.txManager.getTransactions().filter(t => t.type === 'expense');
+        const categories = {};
+        
+        txs.forEach(t => {
+            if (!categories[t.category]) categories[t.category] = 0;
+            categories[t.category] += t.amount;
+        });
+        
+        return categories;
+    }
+    
+    renderChart() {
+        if (typeof document === 'undefined' || typeof Chart === 'undefined') return;
+        
+        const ctx = document.getElementById('expenseChart');
+        if (!ctx) return;
+        
+        const data = this.getExpensesByCategory();
+        const labels = Object.keys(data).map(k => {
+            const map = {
+                'Food': 'Mâncare',
+                'Transport': 'Transport',
+                'Entertainment': 'Divertisment',
+                'Utilities': 'Facturi',
+                'Salary': 'Salariu',
+                'Other': 'Altele'
+            };
+            return map[k] || k;
+        });
+        const values = Object.values(data);
+        
+        if (this.chartInstance) {
+            this.chartInstance.destroy();
+        }
+        
+        if (labels.length === 0) {
+            return;
+        }
+        
+        this.chartInstance = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    backgroundColor: [
+                        '#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#ef4444'
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { color: '#94a3b8', font: { family: 'Inter' } }
+                    }
+                }
+            }
+        });
     }
 }
 
