@@ -113,7 +113,7 @@ class AnalyticsEngine {
                 datasets: [{
                     data: values,
                     backgroundColor: [
-                        '#4ea8a6', '#e2574c', '#f0a030', '#6c7ee1', '#38b97e', '#d26eb0'
+                        '#a78bfa', '#67e8f9', '#fb7185', '#fbbf24', '#34d399', '#f472b6'
                     ],
                     borderWidth: 0,
                     hoverOffset: 6
@@ -127,7 +127,7 @@ class AnalyticsEngine {
                     legend: {
                         position: 'right',
                         labels: {
-                            color: '#64748b',
+                            color: '#a1a1aa',
                             font: { family: 'Inter', size: 12 },
                             padding: 16,
                             usePointStyle: true,
