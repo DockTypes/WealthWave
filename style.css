@@ -1,11 +1,8 @@
-/* ============================================================
-   WealthWave — Dark Aurora
-   Deep black + northern-lights aurora gradient glow
-   ============================================================ */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/* ── Tokens ────────────────────────────────────────────────── */
+
 :root {
     --bg-0: #09090b;
     --bg-1: #0f0f12;
@@ -34,7 +31,7 @@
     --ease: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Reset ─────────────────────────────────────────────────── */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -45,14 +42,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ── Shell ──────────────────────────────────────────────────── */
+
 .shell {
     display: grid;
     grid-template-columns: 240px 1fr;
     min-height: 100vh;
 }
 
-/* ── Sidebar ───────────────────────────────────────────────── */
+
 .sidebar {
     background: var(--bg-1);
     border-right: 1px solid var(--glass-border);
@@ -146,7 +143,7 @@ body {
 .avatar-name { font-size: 0.82rem; font-weight: 600; display: block; color: var(--text-1); }
 .avatar-role { font-size: 0.7rem; color: var(--text-3); }
 
-/* ── Main ──────────────────────────────────────────────────── */
+
 .main {
     padding: 2rem 2.5rem;
     overflow-y: auto;
@@ -154,7 +151,7 @@ body {
     position: relative;
 }
 
-/* ✨ Aurora glow — the magic ✨ */
+
 .main::before {
     content: '';
     position: fixed;
@@ -176,7 +173,7 @@ body {
     z-index: 1;
 }
 
-/* Header */
+
 .header h1 {
     font-size: 1.5rem;
     font-weight: 700;
@@ -189,7 +186,7 @@ body {
     margin-top: 0.15rem;
 }
 
-/* ── Cards ─────────────────────────────────────────────────── */
+
 .neu-card {
     background: var(--glass);
     border: 1px solid var(--glass-border);
@@ -237,7 +234,7 @@ body {
     background: var(--accent-glow);
 }
 
-/* ── Metrics ───────────────────────────────────────────────── */
+
 .metrics {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -282,7 +279,7 @@ body {
 .val-up   { color: var(--green); }
 .val-down { color: var(--red); }
 
-/* ── Grid ──────────────────────────────────────────────────── */
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1.3fr;
@@ -296,7 +293,7 @@ body {
     gap: 1rem;
 }
 
-/* Chart */
+
 .chart-box { height: 220px; position: relative; }
 
 .empty-hint {
@@ -306,7 +303,7 @@ body {
     padding: 0.5rem 0;
 }
 
-/* ── Form ──────────────────────────────────────────────────── */
+
 .form {
     display: flex;
     flex-direction: column;
@@ -377,7 +374,7 @@ body {
 
 .btn-add:active { transform: translateY(0); }
 
-/* ── Table ─────────────────────────────────────────────────── */
+
 .history-wrap {
     display: flex;
     flex-direction: column;
@@ -445,7 +442,7 @@ body {
 
 .btn-delete:hover { color: var(--red); background: var(--red-bg); }
 
-/* ── Responsive ────────────────────────────────────────────── */
+
 @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) {
     .shell { grid-template-columns: 1fr; }
@@ -455,7 +452,7 @@ body {
     .form-2col { grid-template-columns: 1fr; }
 }
 
-/* ── Entrance ──────────────────────────────────────────────── */
+
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -468,7 +465,7 @@ body {
 .col-l .neu-card:nth-child(2) { animation: fadeUp 0.45s var(--ease) 0.26s both; }
 .col-r .neu-card { animation: fadeUp 0.45s var(--ease) 0.22s both; }
 
-/* ── SPA Page System ───────────────────────────────────────── */
+
 .page { 
     display: none; 
     flex-direction: column;
@@ -476,7 +473,7 @@ body {
 }
 .page-active { display: flex; animation: fadeUp 0.35s var(--ease) both; }
 
-/* ── Filter Bar (Transactions Page) ────────────────────────── */
+
 .filter-bar {
     display: flex;
     gap: 0.6rem;
@@ -488,7 +485,7 @@ body {
     max-width: 220px;
 }
 
-/* ── Activity Feed ─────────────────────────────────────────── */
+
 .feed-list {
     list-style: none;
     display: flex;
@@ -533,7 +530,7 @@ body {
     white-space: nowrap;
 }
 
-/* ── Settings ──────────────────────────────────────────────── */
+
 .settings-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -550,7 +547,7 @@ body {
     .filter-bar .neu-input { max-width: none; }
 }
 
-/* ── Danger Button ─────────────────────────────────────────── */
+
 .btn-danger {
     display: flex;
     align-items: center;
