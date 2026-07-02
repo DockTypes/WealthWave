@@ -102,6 +102,10 @@ class AnalyticsEngine {
             return;
         }
         
+        // Hide/show empty message
+        const emptyMsg = document.getElementById('chart-empty');
+        if (emptyMsg) emptyMsg.style.display = labels.length > 0 ? 'none' : 'block';
+        
         this.chartInstance = new Chart(ctx, {
             type: 'doughnut',
             data: {
@@ -109,10 +113,10 @@ class AnalyticsEngine {
                 datasets: [{
                     data: values,
                     backgroundColor: [
-                        '#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#ef4444'
+                        '#6c7ee1', '#9b7bf7', '#e5484d', '#f0c000', '#3ecf8e', '#e879a8'
                     ],
                     borderWidth: 0,
-                    hoverOffset: 4
+                    hoverOffset: 6
                 }]
             },
             options: {
@@ -122,7 +126,13 @@ class AnalyticsEngine {
                 plugins: {
                     legend: {
                         position: 'right',
-                        labels: { color: '#94a3b8', font: { family: 'Inter' } }
+                        labels: {
+                            color: '#8b8fa3',
+                            font: { family: 'Inter', size: 12 },
+                            padding: 16,
+                            usePointStyle: true,
+                            pointStyleWidth: 10
+                        }
                     }
                 }
             }
@@ -183,16 +193,26 @@ class UIController {
 
         // Update Totals
         const totals = this.analytics.getTotals();
-        this.lblBalance.textContent = this.formatCurrency(totals.balance);
-        this.lblIncome.textContent = this.formatCurrency(totals.income);
-        this.lblExpense.textContent = this.formatCurrency(totals.expense);
+        if (this.lblBalance) this.lblBalance.textContent = this.formatCurrency(totals.balance);
+        if (this.lblIncome) this.lblIncome.textContent = this.formatCurrency(totals.income);
+        if (this.lblExpense) this.lblExpense.textContent = this.formatCurrency(totals.expense);
+
+        // Update date display
+        const dateEl = document.getElementById('current-date');
+        if (dateEl) {
+            dateEl.textContent = new Date().toLocaleDateString('ro-RO', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
 
         // Update Table
         this.list.innerHTML = '';
         const txs = this.txManager.getTransactions();
 
+        // Update tx count
+        const countEl = document.getElementById('tx-count');
+        if (countEl) countEl.textContent = `${txs.length} tranzacți${txs.length === 1 ? 'e' : 'i'}`;
+
         if (txs.length === 0) {
-            this.list.innerHTML = '<tr><td colspan="5" style="text-align:center; color: var(--text-muted); padding: 2rem;">Nu există tranzacții. Adaugă una!</td></tr>';
+            this.list.innerHTML = '<tr><td colspan="5" style="text-align:center; color: var(--text-tertiary); padding: 3rem 1rem;">Nicio tranzacție încă. Adaugă prima ta tranzacție!</td></tr>';
         }
 
         txs.forEach(t => {
@@ -204,7 +224,7 @@ class UIController {
             tr.innerHTML = `
                 <td>${this.formatDate(t.date)}</td>
                 <td><span class="tag">${t.category}</span></td>
-                <td>${t.desc || '-'}</td>
+                <td>${t.desc || '—'}</td>
                 <td class="${colorClass}" style="font-weight: 600;">${sign} ${this.formatCurrency(t.amount)}</td>
                 <td><button class="btn-delete" data-id="${t.id}">&#10006;</button></td>
             `;

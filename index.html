@@ -6,119 +6,175 @@
     <title>WealthWave | Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar Navigation -->
+    <div class="app-shell">
+        <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
-                <h2>WealthWave</h2>
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                </div>
+                <span class="brand-name">WealthWave</span>
             </div>
-            <nav>
-                <ul>
-                    <li class="active"><a href="#">Dashboard</a></li>
-                    <li><a href="#">Tranzacții</a></li>
-                    <li><a href="#">Setări</a></li>
-                </ul>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <span>Tranzacții</span>
+                </a>
+                <a href="#" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Setări</span>
+                </a>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-pill">
+                    <div class="user-avatar">C</div>
+                    <span>Cristian</span>
+                </div>
+            </div>
         </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <header class="top-header">
+        <!-- Main Content Area -->
+        <main class="main-area">
+            <!-- Top Bar -->
+            <header class="top-bar">
                 <div>
-                    <h1>Bun venit înapoi,</h1>
-                    <p class="subtitle">Iată sumarul finanțelor tale de azi.</p>
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Bun venit înapoi. Iată sumarul finanțelor tale.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="date-pill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                        <span id="current-date"></span>
+                    </div>
                 </div>
             </header>
 
-            <!-- Summary Cards -->
-            <section class="summary-cards">
-                <div class="card balance-card">
-                    <h3>Balanță Totală</h3>
-                    <h2 id="total-balance">0 RON</h2>
+            <!-- Summary Metrics -->
+            <section class="metrics-row">
+                <div class="metric-card">
+                    <div class="metric-icon balance-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                    </div>
+                    <div class="metric-info">
+                        <span class="metric-label">Balanță Totală</span>
+                        <span class="metric-value" id="total-balance">0,00 RON</span>
+                    </div>
                 </div>
-                <div class="card income-card">
-                    <h3>Venituri Lunare</h3>
-                    <h2 id="total-income" class="text-success">0 RON</h2>
+                <div class="metric-card">
+                    <div class="metric-icon income-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    </div>
+                    <div class="metric-info">
+                        <span class="metric-label">Venituri</span>
+                        <span class="metric-value income-val" id="total-income">0,00 RON</span>
+                    </div>
                 </div>
-                <div class="card expense-card">
-                    <h3>Cheltuieli Lunare</h3>
-                    <h2 id="total-expense" class="text-danger">0 RON</h2>
+                <div class="metric-card">
+                    <div class="metric-icon expense-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+                    </div>
+                    <div class="metric-info">
+                        <span class="metric-label">Cheltuieli</span>
+                        <span class="metric-value expense-val" id="total-expense">0,00 RON</span>
+                    </div>
                 </div>
             </section>
 
-            <!-- Main Layout (Charts & Form) -->
+            <!-- Main Content Grid -->
             <div class="content-grid">
                 <!-- Left Column -->
-                <div class="left-column">
-                    <!-- Chart Section -->
-                    <section class="card chart-section">
-                        <h3>Distribuție Cheltuieli</h3>
-                        <div class="chart-wrapper">
+                <div class="col-left">
+                    <!-- Chart Card -->
+                    <div class="glass-card chart-card">
+                        <div class="card-header">
+                            <h2>Distribuție Cheltuieli</h2>
+                            <span class="card-badge">Live</span>
+                        </div>
+                        <div class="chart-container">
                             <canvas id="expenseChart"></canvas>
                         </div>
-                    </section>
+                        <p class="chart-empty-msg" id="chart-empty">Adaugă cheltuieli pentru a vedea graficul.</p>
+                    </div>
 
-                    <!-- Transaction Form -->
-                    <section class="card form-section">
-                        <h3>Adaugă Tranzacție</h3>
-                        <form id="transaction-form">
-                            <div class="form-group">
-                                <label>Tip</label>
-                                <select id="t-type" required>
-                                    <option value="expense">Cheltuială</option>
-                                    <option value="income">Venit</option>
-                                </select>
+                    <!-- Add Transaction -->
+                    <div class="glass-card form-card">
+                        <div class="card-header">
+                            <h2>Tranzacție Nouă</h2>
+                        </div>
+                        <form id="transaction-form" class="tx-form">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="t-type">Tip</label>
+                                    <select id="t-type" required>
+                                        <option value="expense">Cheltuială</option>
+                                        <option value="income">Venit</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label for="t-amount">Sumă (RON)</label>
+                                    <input type="number" id="t-amount" placeholder="0.00" required min="1" step="0.01">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Sumă (RON)</label>
-                                <input type="number" id="t-amount" placeholder="ex: 150" required min="1">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="t-category">Categorie</label>
+                                    <select id="t-category" required>
+                                        <option value="Food">Mâncare</option>
+                                        <option value="Transport">Transport</option>
+                                        <option value="Entertainment">Divertisment</option>
+                                        <option value="Utilities">Facturi</option>
+                                        <option value="Salary">Salariu</option>
+                                        <option value="Other">Altele</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label for="t-desc">Descriere</label>
+                                    <input type="text" id="t-desc" placeholder="ex: Kaufland">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Categorie</label>
-                                <select id="t-category" required>
-                                    <option value="Food">Mâncare</option>
-                                    <option value="Transport">Transport</option>
-                                    <option value="Entertainment">Divertisment</option>
-                                    <option value="Utilities">Facturi</option>
-                                    <option value="Salary">Salariu</option>
-                                    <option value="Other">Altele</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Descriere (Opțional)</label>
-                                <input type="text" id="t-desc" placeholder="ex: Cumpărături Kaufland">
-                            </div>
-                            <button type="submit" class="btn-primary">Adaugă</button>
+                            <button type="submit" class="btn-submit">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Adaugă Tranzacție
+                            </button>
                         </form>
-                    </section>
+                    </div>
                 </div>
 
-                <!-- Right Column -->
-                <div class="right-column">
-                    <section class="card history-section">
-                        <h3>Istoric Recent</h3>
-                        <div class="table-responsive">
-                            <table class="transaction-table">
+                <!-- Right Column: Transaction History -->
+                <div class="col-right">
+                    <div class="glass-card history-card">
+                        <div class="card-header">
+                            <h2>Istoric Tranzacții</h2>
+                            <span class="tx-count" id="tx-count">0 tranzacții</span>
+                        </div>
+                        <div class="table-wrap">
+                            <table class="tx-table">
                                 <thead>
                                     <tr>
                                         <th>Data</th>
                                         <th>Categorie</th>
                                         <th>Descriere</th>
                                         <th>Sumă</th>
-                                        <th>Acțiune</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
-                                <tbody id="transaction-list">
-                                    <!-- Dinamic generate -->
-                                </tbody>
+                                <tbody id="transaction-list"></tbody>
                             </table>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
         </main>
