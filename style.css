@@ -1,0 +1,8 @@
+/* WealthWave Global Styles */
+:root {
+    --bg-base: #0f172a;
+}
+body {
+    background: var(--bg-base);
+    color: white;
+}
