@@ -3,12 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WealthWave</title>
-    <link rel="stylesheet" href="style.css">
+    <title>WealthWave | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app"></div>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>WealthWave</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#">Dashboard</a></li>
+                    <li><a href="#">Tranzacții</a></li>
+                    <li><a href="#">Setări</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div>
+                    <h1>Bun venit înapoi,</h1>
+                    <p class="subtitle">Iată sumarul finanțelor tale de azi.</p>
+                </div>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="summary-cards">
+                <div class="card balance-card">
+                    <h3>Balanță Totală</h3>
+                    <h2 id="total-balance">0 RON</h2>
+                </div>
+                <div class="card income-card">
+                    <h3>Venituri Lunare</h3>
+                    <h2 id="total-income" class="text-success">0 RON</h2>
+                </div>
+                <div class="card expense-card">
+                    <h3>Cheltuieli Lunare</h3>
+                    <h2 id="total-expense" class="text-danger">0 RON</h2>
+                </div>
+            </section>
+
+            <!-- Main Layout (Charts & Form) -->
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Chart Section -->
+                    <section class="card chart-section">
+                        <h3>Distribuție Cheltuieli</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="expenseChart"></canvas>
+                        </div>
+                    </section>
+
+                    <!-- Transaction Form -->
+                    <section class="card form-section">
+                        <h3>Adaugă Tranzacție</h3>
+                        <form id="transaction-form">
+                            <div class="form-group">
+                                <label>Tip</label>
+                                <select id="t-type" required>
+                                    <option value="expense">Cheltuială</option>
+                                    <option value="income">Venit</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sumă (RON)</label>
+                                <input type="number" id="t-amount" placeholder="ex: 150" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Categorie</label>
+                                <select id="t-category" required>
+                                    <option value="Food">Mâncare</option>
+                                    <option value="Transport">Transport</option>
+                                    <option value="Entertainment">Divertisment</option>
+                                    <option value="Utilities">Facturi</option>
+                                    <option value="Salary">Salariu</option>
+                                    <option value="Other">Altele</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Descriere (Opțional)</label>
+                                <input type="text" id="t-desc" placeholder="ex: Cumpărături Kaufland">
+                            </div>
+                            <button type="submit" class="btn-primary">Adaugă</button>
+                        </form>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                    <section class="card history-section">
+                        <h3>Istoric Recent</h3>
+                        <div class="table-responsive">
+                            <table class="transaction-table">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Categorie</th>
+                                        <th>Descriere</th>
+                                        <th>Sumă</th>
+                                        <th>Acțiune</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transaction-list">
+                                    <!-- Dinamic generate -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>
